@@ -30,6 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      resizeToAvoidBottomInset: false,
       body: Column(
         children: [
           Padding(
@@ -86,28 +87,30 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ],
                     ),
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 7,
-                      ),
-                      child: TextField(
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: "Search",
-                          prefixIconColor: Colors.black,
-                          prefix: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Image(
-                                width: 18,
-                                image: AssetImage(AppIcons.search),
-                              ),
-                              SizedBox(width: 20),
-                            ],
+                    child: const Stack(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(
+                            left: 50,
+                            top: 5,
+                            bottom: 5,
+                          ),
+                          child: TextField(
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: "Search",
+                            ),
                           ),
                         ),
-                      ),
+                        Positioned(
+                          left: 15,
+                          top: 15,
+                          child: Image(
+                            width: 24,
+                            image: AssetImage(AppIcons.search),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -125,9 +128,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   onPressed: () {},
                   icon: const Padding(
-                    padding: EdgeInsets.all(12.0),
+                    padding: EdgeInsets.all(11.0),
                     child: Image(
-                      width: 24,
+                      width: 22,
                       image: AssetImage(AppIcons.settingsSlider),
                     ),
                   ),
