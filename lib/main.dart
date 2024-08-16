@@ -1,4 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/router/router_names.dart';
+import 'package:food_app/screens/home/home_screen.dart';
+import 'package:food_app/screens/order/order_screen.dart';
+import 'package:food_app/screens/payment/payment_screen.dart';
+import 'package:food_app/screens/product/product_screen.dart';
+import 'package:food_app/screens/splash/splash_screen.dart';
+import 'package:food_app/screens/success/success_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -7,9 +14,19 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: const SplashScreen(),
+      routes: {
+        RouterNames.splash: (context) => const SplashScreen(),
+        RouterNames.home: (context) => const HomeScreen(),
+        RouterNames.product: (context) => const ProductScreen(),
+        RouterNames.order: (context) => const OrderScreen(),
+        RouterNames.payment: (context) => const PaymentScreen(),
+        RouterNames.success: (context) => const SuccessScreen(),
+      },
+    );
   }
 }
