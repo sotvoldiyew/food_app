@@ -57,10 +57,13 @@ class _ProductScreenState extends State<ProductScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.sizeOf(context).width;
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
+        forceMaterialTransparency: true,
         leading: IconButton(
           onPressed: () {
             Navigator.maybePop(context);
@@ -70,22 +73,24 @@ class _ProductScreenState extends State<ProductScreen> {
         actions: <Widget>[
           IconButton(
             onPressed: () {},
-            icon: const Image(image: AssetImage(AppIcons.search), width: 25,),
+            icon: const Image(
+              image: AssetImage(AppIcons.search),
+              width: 25,
+            ),
           ),
         ],
       ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 19),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: ListView(
             children: <Widget>[
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Image(
                     image: AssetImage(widget.foodImage),
-                    width: 350,
+                    width: width * 0.6,
                   ),
                 ],
               ),
@@ -178,7 +183,7 @@ class _ProductScreenState extends State<ProductScreen> {
                   ),
                   const Expanded(child: SizedBox()),
                   SizedBox(
-                    width: 160,
+                    width: 140,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
@@ -206,7 +211,7 @@ class _ProductScreenState extends State<ProductScreen> {
                                 color: Colors.white,
                               ),
                             ),
-                            const SizedBox(width: 15),
+                            const SizedBox(width: 10),
                             Expanded(
                               child: Center(
                                 child: Text(
@@ -222,7 +227,7 @@ class _ProductScreenState extends State<ProductScreen> {
                                 ),
                               ),
                             ),
-                            const SizedBox(width: 15),
+                            const SizedBox(width: 10),
                             MyFilledButton(
                               onPressed: _addCountNumber,
                               child: const Icon(
@@ -237,7 +242,7 @@ class _ProductScreenState extends State<ProductScreen> {
                   )
                 ],
               ),
-              const Expanded(child: SizedBox()),
+              const SizedBox(height: 30),
               Row(
                 children: <Widget>[
                   SizedBox(
@@ -276,8 +281,14 @@ class _ProductScreenState extends State<ProductScreen> {
                     style: FilledButton.styleFrom(
                       backgroundColor: AppColors.color3C2F2F,
                       shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(20))),
-                      fixedSize: const Size(240, 70),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(20),
+                        ),
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 17,
+                        horizontal: 30,
+                      ),
                     ),
                     child: Text(
                       "ORDER NOW",
