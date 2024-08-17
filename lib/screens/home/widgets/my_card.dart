@@ -48,12 +48,16 @@ class _MyCardState extends State<MyCard> {
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     fontWeight: FontWeight.w600,
                   ),
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
             ),
             Text(
               widget.name2,
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     fontWeight: FontWeight.w500,
                   ),
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
             ),
             const SizedBox(height: 6),
             Row(
