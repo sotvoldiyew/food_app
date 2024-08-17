@@ -14,7 +14,6 @@ class PaymentScreen extends StatefulWidget {
 }
 
 class _PaymentScreenState extends State<PaymentScreen> {
-
   late double price;
   bool _value = true;
   int _radioListTileValue = 1;
@@ -174,7 +173,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   ),
                   const Expanded(child: SizedBox()),
                   Text(
-                    "\$${price + 1.8}",
+                    "\$${(price + 1.8).toStringAsFixed(2)}",
                     style: const TextStyle(
                       fontSize: 21,
                       fontWeight: FontWeight.w400,
@@ -226,7 +225,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
             ),
             RadioListTile(
               contentPadding:
-              const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
+                  const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
               value: _radioListTileValue == 1 ? true : false,
               groupValue: true,
               onChanged: (_) {
@@ -257,8 +256,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
               ),
               controlAffinity: ListTileControlAffinity.trailing,
               selected: true,
-              activeColor: _radioListTileValue == 1 ? Colors.white : Colors.black,
-              selectedTileColor: _radioListTileValue == 1 ? AppColors.color3C2F2F : Colors.grey.shade300,
+              activeColor:
+                  _radioListTileValue == 1 ? Colors.white : Colors.black,
+              selectedTileColor: _radioListTileValue == 1
+                  ? AppColors.color3C2F2F
+                  : Colors.grey.shade300,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20)),
             ),
@@ -267,7 +269,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
             ),
             RadioListTile(
               contentPadding:
-              const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
+                  const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
               value: _radioListTileValue == 2 ? true : false,
               groupValue: true,
               onChanged: (_) {
@@ -302,8 +304,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
               ),
               controlAffinity: ListTileControlAffinity.trailing,
               selected: true,
-              activeColor:  _radioListTileValue == 2 ? Colors.white : Colors.black,
-              selectedTileColor: _radioListTileValue == 2 ? AppColors.color3C2F2F : Colors.grey.shade300,
+              activeColor:
+                  _radioListTileValue == 2 ? Colors.white : Colors.black,
+              selectedTileColor: _radioListTileValue == 2
+                  ? AppColors.color3C2F2F
+                  : Colors.grey.shade300,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
@@ -335,8 +340,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     Text(
                       "Total price",
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: const Color(0xff808080),
-                      ),
+                            color: const Color(0xff808080),
+                          ),
                     ),
                     Row(
                       children: [
@@ -346,18 +351,18 @@ class _PaymentScreenState extends State<PaymentScreen> {
                               .textTheme
                               .headlineLarge
                               ?.copyWith(
-                            color: const Color(0xffEf2a39),
-                            fontWeight: FontWeight.w600,
-                          ),
+                                color: const Color(0xffEf2a39),
+                                fontWeight: FontWeight.w600,
+                              ),
                         ),
                         Text(
-                          "${price + 1.8}",
+                          "${(price + 1.8).toStringAsFixed(2)}",
                           style: Theme.of(context)
                               .textTheme
                               .headlineLarge
                               ?.copyWith(
-                            fontWeight: FontWeight.w600,
-                          ),
+                                fontWeight: FontWeight.w600,
+                              ),
                         ),
                       ],
                     )
@@ -388,9 +393,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                   .textTheme
                                   .headlineSmall
                                   ?.copyWith(
-                                  color: const Color(0xffEF2A39),
-                                  fontFamily: "Poppins",fontWeight: FontWeight.w700),
-
+                                      color: const Color(0xffEF2A39),
+                                      fontFamily: "Poppins",
+                                      fontWeight: FontWeight.w700),
                             ),
                           ],
                         ),
@@ -398,7 +403,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                           padding: const EdgeInsets.symmetric(horizontal: 23),
                           child: Text(
                             "Your payment was successful.A"
-                                " receipt for this purchase has been sent to your email.",
+                            " receipt for this purchase has been sent to your email.",
                             textAlign: TextAlign.center,
                             style: Theme.of(context).textTheme.bodyMedium,
                           ),
@@ -410,18 +415,20 @@ class _PaymentScreenState extends State<PaymentScreen> {
                               borderRadius: BorderRadius.circular(10),
                             ),
                             onPressed: () {
-                              Navigator.pushReplacementNamed(context, RouterNames.home);
+                              Navigator.pushReplacementNamed(
+                                  context, RouterNames.home);
                             },
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 25),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 25),
                               child: Text(
                                 "Go Back",
                                 style: Theme.of(context)
                                     .textTheme
                                     .titleLarge
                                     ?.copyWith(
-                                  color: Colors.white,
-                                ),
+                                      color: Colors.white,
+                                    ),
                               ),
                             ),
                           ),
@@ -446,8 +453,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   child: Text(
                     "Pay Now",
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      color: Colors.white,
-                    ),
+                          color: Colors.white,
+                        ),
                   ),
                 ),
               ],

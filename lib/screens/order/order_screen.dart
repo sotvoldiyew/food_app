@@ -326,7 +326,7 @@ class _OrderScreenState extends State<OrderScreen> {
                               fontWeight: FontWeight.w600),
                         ),
                         Text(
-                          "${widget.foodPrice * number}",
+                          (widget.foodPrice * number).toStringAsFixed(2),
                           style: Theme.of(context)
                               .textTheme
                               .headlineLarge
