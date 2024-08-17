@@ -55,7 +55,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
             child: Padding(
               padding: const EdgeInsets.only(top: 20, right: 20, left: 0),
               child: SizedBox(
-                height: 30,
+                height: 25,
                 child: Image.asset(
                   AppIcons.search,
                 ),

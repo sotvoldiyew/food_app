@@ -51,11 +51,10 @@ class _OrderScreenState extends State<OrderScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+      body: ListView(
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 12, right: 12, top: 22),
+            padding: const EdgeInsets.only(left: 12, right: 12, top: 12),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -85,120 +84,102 @@ class _OrderScreenState extends State<OrderScreen> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 35),
+            padding: const EdgeInsets.only(top: 30),
             child: Row(
               children: [
-                const Image(
-                  image: AssetImage(AppImages.separated),
-                  width: 180,
+                const Expanded(
+                  child: Image(
+                    image: AssetImage(AppImages.separated),
+                  ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 40.0, right: 10),
-                  child: SizedBox(
-                    width: 180,
-                    height: 310,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        RichText(
-                          text: TextSpan(
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyLarge
-                                ?.copyWith(height: 1.8, fontSize: 15),
-                            children: [
-                              TextSpan(
-                                text: "Customize ",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyLarge
-                                    ?.copyWith(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15),
-                              ),
-                              const TextSpan(
-                                text:
-                                    "Your Burger to Your Tastes. Ultimate Experience ",
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 30.0),
-                          child: Text(
-                            "Spicy",
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyLarge
-                                ?.copyWith(
-                                    fontWeight: FontWeight.w600, fontSize: 14),
-                          ),
-                        ),
-                        Slider.adaptive(
-                          value: sliderValue,
-                          onChanged: (value) {
-                            setState(() {
-                              sliderValue = value;
-                            });
-                          },
-                          divisions: 100,
-                          activeColor: Colors.red,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                const SizedBox(width: 20),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      RichText(
+                        text: TextSpan(
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyLarge
+                              ?.copyWith(height: 1.8, fontSize: 15),
                           children: [
-                            Text("Mild",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .labelMedium
-                                    ?.copyWith(
-                                        color: const Color(0xff1CC019),
-                                        fontSize: 14)),
-                            Text("Hot",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .labelMedium
-                                    ?.copyWith(
-                                        color: const Color(0xffEF2A39),
-                                        fontSize: 14)),
+                            TextSpan(
+                              text: "Customize ",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge
+                                  ?.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15),
+                            ),
+                            const TextSpan(
+                              text:
+                                  "Your Burger to Your Tastes. Ultimate Experience ",
+                            ),
                           ],
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 30),
-                          child: Text(
-                            "Portion",
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 30.0),
+                        child: Text(
+                          "Spicy",
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyLarge
+                              ?.copyWith(
+                                  fontWeight: FontWeight.w600, fontSize: 14),
+                        ),
+                      ),
+                      Slider.adaptive(
+                        value: sliderValue,
+                        onChanged: (value) {
+                          setState(() {
+                            sliderValue = value;
+                          });
+                        },
+                        divisions: 100,
+                        activeColor: Colors.red,
+                      ),
+                      Row(
+                        children: [
+                          const SizedBox(width: 25),
+                          Text(
+                            "Mild",
                             style: Theme.of(context)
                                 .textTheme
-                                .labelLarge
-                                ?.copyWith(fontSize: 15),
+                                .labelMedium
+                                ?.copyWith(
+                                    color: const Color(0xff1CC019),
+                                    fontSize: 14),
                           ),
+                          const Expanded(child: SizedBox()),
+                          Text(
+                            "Hot",
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelMedium
+                                ?.copyWith(
+                                    color: const Color(0xffEF2A39),
+                                    fontSize: 14),
+                          ),
+                          const SizedBox(width: 25),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 20),
+                        child: Text(
+                          "Portion",
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelLarge
+                              ?.copyWith(fontSize: 15),
                         ),
-                        Row(
-                          children: [
-                            IconButton(
-                                style: const ButtonStyle(
-                                  shape: WidgetStatePropertyAll(
-                                    RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(12),
-                                      ),
-                                    ),
-                                  ),
-                                  backgroundColor: WidgetStatePropertyAll(
-                                    Color(0xffef2a39),
-                                  ),
-                                ),
-                                onPressed: minus,
-                                icon: const Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Image(
-                                    width: 15,
-                                    height: 12,
-                                    image: AssetImage(AppIcons.minus),
-                                  ),
-                                )),
-                            Expanded(child: Center(child: Text("$number"))),
-                            IconButton(
+                      ),
+                      const SizedBox(height: 10),
+                      Row(
+                        children: [
+                          IconButton(
                               style: const ButtonStyle(
                                 shape: WidgetStatePropertyAll(
                                   RoundedRectangleBorder(
@@ -211,22 +192,45 @@ class _OrderScreenState extends State<OrderScreen> {
                                   Color(0xffef2a39),
                                 ),
                               ),
-                              onPressed: plus,
+                              onPressed: minus,
                               icon: const Padding(
                                 padding: EdgeInsets.all(8.0),
                                 child: Image(
                                   width: 15,
                                   height: 12,
-                                  image: AssetImage(AppIcons.plus),
+                                  image: AssetImage(AppIcons.minus),
+                                ),
+                              )),
+                          Expanded(child: Center(child: Text("$number"))),
+                          IconButton(
+                            style: const ButtonStyle(
+                              shape: WidgetStatePropertyAll(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(12),
+                                  ),
                                 ),
                               ),
+                              backgroundColor: WidgetStatePropertyAll(
+                                Color(0xffef2a39),
+                              ),
                             ),
-                          ],
-                        )
-                      ],
-                    ),
+                            onPressed: plus,
+                            icon: const Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Image(
+                                width: 15,
+                                height: 12,
+                                image: AssetImage(AppIcons.plus),
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
                   ),
                 ),
+                const SizedBox(width: 20),
               ],
             ),
           ),
@@ -300,7 +304,6 @@ class _OrderScreenState extends State<OrderScreen> {
               ],
             ),
           ),
-          const Expanded(child: SizedBox.expand()),
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: Row(
