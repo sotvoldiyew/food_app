@@ -142,6 +142,7 @@ class _HomeScreenState extends State<HomeScreen> {
           SizedBox(
             height: 50,
             child: ListView.separated(
+              physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
               itemBuilder: (BuildContext context, int index) =>
                   const SizedBox(width: 15),
@@ -157,6 +158,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 19),
               child: GridView.builder(
+                physics: const BouncingScrollPhysics(),
                 itemCount: products.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
