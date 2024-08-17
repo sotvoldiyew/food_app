@@ -33,10 +33,13 @@ class _MyCardState extends State<MyCard> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Center(
-              child: Image(
-                width: 120,
-                image: AssetImage(widget.image),
+            SizedBox(
+              height: 120,
+              child: Center(
+                child: Image(
+                  width: 120,
+                  image: AssetImage(widget.image),
+                ),
               ),
             ),
             const SizedBox(height: 10),

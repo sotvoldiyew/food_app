@@ -6,7 +6,6 @@ import 'package:food_app/screens/order/order_screen.dart';
 import 'package:food_app/screens/payment/payment_screen.dart';
 import 'package:food_app/screens/product/product_screen.dart';
 import 'package:food_app/screens/splash/splash_screen.dart';
-import 'package:food_app/screens/success/success_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,14 +20,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const OrderScreen(),
+      home: const SplashScreen(),
       routes: {
         RouterNames.splash: (context) => const SplashScreen(),
         RouterNames.home: (context) => const HomeScreen(),
         RouterNames.product: (context) => const ProductScreen(),
         RouterNames.order: (context) => const OrderScreen(),
         RouterNames.payment: (context) => const PaymentScreen(),
-        RouterNames.success: (context) => const SuccessScreen(),
       },
     );
   }

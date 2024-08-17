@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:food_app/screens/order/order_screen.dart';
 import 'package:food_app/screens/product/widgets/my_filled_button.dart';
 import 'package:food_app/style/app_colors.dart';
+import 'package:food_app/style/app_icons.dart';
 import 'package:food_app/style/app_images.dart';
 
 class ProductScreen extends StatefulWidget {
@@ -56,15 +58,19 @@ class _ProductScreenState extends State<ProductScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.maybePop(context);
+          },
+          icon: const Image(image: AssetImage(AppIcons.arrowLeft)),
         ),
         actions: <Widget>[
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.search),
+            icon: const Image(image: AssetImage(AppIcons.search), width: 25,),
           ),
         ],
       ),
@@ -231,7 +237,7 @@ class _ProductScreenState extends State<ProductScreen> {
                   )
                 ],
               ),
-              const SizedBox(height: 50),
+              const Expanded(child: SizedBox()),
               Row(
                 children: <Widget>[
                   SizedBox(
@@ -255,7 +261,18 @@ class _ProductScreenState extends State<ProductScreen> {
                   ),
                   const Expanded(child: SizedBox()),
                   FilledButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => OrderScreen(
+                            foodSpicy: _sliderValue / 100,
+                            countNumber: _countNumber,
+                            foodPrice: widget.foodPrice,
+                          ),
+                        ),
+                      );
+                    },
                     style: FilledButton.styleFrom(
                       backgroundColor: AppColors.color3C2F2F,
                       shape: const RoundedRectangleBorder(
@@ -272,7 +289,8 @@ class _ProductScreenState extends State<ProductScreen> {
                     ),
                   ),
                 ],
-              )
+              ),
+              const SizedBox(height: 25),
             ],
           ),
         ),

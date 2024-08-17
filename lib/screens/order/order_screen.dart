@@ -1,18 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/screens/order/toppings.dart';
+import 'package:food_app/screens/payment/payment_screen.dart';
 import 'package:food_app/style/app_icons.dart';
 import 'package:food_app/style/app_images.dart';
 
 class OrderScreen extends StatefulWidget {
-  const OrderScreen({super.key});
+  const OrderScreen({
+    super.key,
+    this.foodSpicy = 0,
+    this.countNumber = 0,
+    this.foodPrice = 0,
+  });
+
+  final double foodSpicy;
+  final int countNumber;
+  final double foodPrice;
 
   @override
   State<OrderScreen> createState() => _OrderScreenState();
 }
 
 class _OrderScreenState extends State<OrderScreen> {
-  int number = 1;
-  double sliderValue = 0;
+  late int number;
+  late double sliderValue;
+  late double price;
+
+  @override
+  void initState() {
+    super.initState();
+    number = widget.countNumber;
+    sliderValue = widget.foodSpicy;
+    price = widget.foodPrice;
+  }
 
   void minus() {
     setState(() {
@@ -44,7 +63,9 @@ class _OrderScreenState extends State<OrderScreen> {
                   height: 50,
                   width: 50,
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.maybePop(context);
+                    },
                     icon: const Image(
                       image: AssetImage(AppIcons.arrowLeft),
                     ),
@@ -156,12 +177,17 @@ class _OrderScreenState extends State<OrderScreen> {
                           children: [
                             IconButton(
                                 style: const ButtonStyle(
-                                    shape: WidgetStatePropertyAll(
-                                        RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(12)))),
-                                    backgroundColor: WidgetStatePropertyAll(
-                                        Color(0xffef2a39))),
+                                  shape: WidgetStatePropertyAll(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(12),
+                                      ),
+                                    ),
+                                  ),
+                                  backgroundColor: WidgetStatePropertyAll(
+                                    Color(0xffef2a39),
+                                  ),
+                                ),
                                 onPressed: minus,
                                 icon: const Padding(
                                   padding: EdgeInsets.all(8.0),
@@ -256,19 +282,19 @@ class _OrderScreenState extends State<OrderScreen> {
               scrollDirection: Axis.horizontal,
               children: const [
                 Padding(
-                  padding: EdgeInsets.only(top: 10, left: 15),
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   child: Toppings(name: "Fries", image: AppImages.food5),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 10, left: 15),
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   child: Toppings(name: "Coleslaw", image: AppImages.food6),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 10, left: 15),
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   child: Toppings(name: "Salad", image: AppImages.food7),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 10, left: 15),
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   child: Toppings(name: "Onion", image: AppImages.food6),
                 ),
               ],
@@ -300,7 +326,7 @@ class _OrderScreenState extends State<OrderScreen> {
                               fontWeight: FontWeight.w600),
                         ),
                         Text(
-                          "16.49",
+                          "${widget.foodPrice * number}",
                           style: Theme.of(context)
                               .textTheme
                               .headlineLarge
@@ -320,7 +346,16 @@ class _OrderScreenState extends State<OrderScreen> {
                         Radius.circular(20),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => PaymentScreen(
+                            price: price,
+                          ),
+                        ),
+                      );
+                    },
                     color: Colors.red,
                     child: Text(
                       "ORDER NOW",

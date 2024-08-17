@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/screens/home/widgets/my_card.dart';
 import 'package:food_app/screens/home/widgets/my_chip.dart';
+import 'package:food_app/screens/product/product_screen.dart';
 import 'package:food_app/style/app_icons.dart';
 import 'package:food_app/style/app_images.dart';
 
@@ -20,10 +21,10 @@ class _HomeScreenState extends State<HomeScreen> {
   };
 
   List<List<String>> products = [
-    [AppImages.burger1, "Cheeseburger", "Wendy's Burger", "4.9"],
-    [AppImages.burger2, "Hamburger", "Veggie Burger", "4.8"],
-    [AppImages.burger3, "Hamburger", "Chicken Burger", "4.6"],
-    [AppImages.burger4, "Hamburger", "Fried Chicken Burger", "4.5"],
+    [AppImages.burger1, "Cheeseburger", "Wendy's Burger", "4.9", "8.50"],
+    [AppImages.burger2, "Hamburger", "Veggie Burger", "4.8", "7.60"],
+    [AppImages.burger3, "Hamburger", "Chicken Burger", "4.6", "12.80"],
+    [AppImages.burger4, "Hamburger", "Fried Chicken Burger", "4.5", "5.75"],
   ];
 
   @override
@@ -167,7 +168,19 @@ class _HomeScreenState extends State<HomeScreen> {
                   crossAxisSpacing: 10,
                 ),
                 itemBuilder: (BuildContext context, int index) => InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ProductScreen(
+                          foodImage: products.elementAt(index)[0],
+                          foodName: products.elementAt(index)[1],
+                          foodStar: double.parse(products.elementAt(index)[3]),
+                          foodPrice: double.parse(products.elementAt(index)[4]),
+                        ),
+                      ),
+                    );
+                  },
                   overlayColor: WidgetStateColor.transparent,
                   child: MyCard(
                     image: products.elementAt(index)[0],

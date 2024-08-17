@@ -6,5 +6,4 @@ class RouterNames{
   static const String product = "product/";
   static const String order = "order/";
   static const String payment = "payment/";
-  static const String success = "success/";
 }
